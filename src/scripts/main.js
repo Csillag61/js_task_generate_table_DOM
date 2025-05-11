@@ -357,7 +357,6 @@ const people = [
 // eslint-disable-next-line no-console
 console.log(people); // you can remove it
 
-// write your code here
 document.addEventListener('DOMContentLoaded', () => {
   const table = document.querySelector('.dashboard');
 
@@ -368,6 +367,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // Create and insert the table header inside <thead>
+  const thead = document.createElement('thead');
   const headerRow = document.createElement('tr');
   const headers = ['Name', 'Sex', 'Born', 'Died', 'Age', 'Century'];
 
@@ -378,9 +379,10 @@ document.addEventListener('DOMContentLoaded', () => {
     headerRow.appendChild(th);
   });
 
-  // Append header row to table
-  table.appendChild(headerRow);
+  thead.appendChild(headerRow);
+  table.appendChild(thead); // Append <thead> before the data rows
 
+  // Loop through each person and create a table row
   people.forEach((person) => {
     const row = document.createElement('tr');
 
