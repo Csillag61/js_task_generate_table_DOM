@@ -368,6 +368,19 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  const headerRow = document.createElement('tr');
+  const headers = ['Name', 'Sex', 'Born', 'Died', 'Age', 'Century'];
+
+  headers.forEach((header) => {
+    const th = document.createElement('th');
+
+    th.textContent = header;
+    headerRow.appendChild(th);
+  });
+
+  // Append header row to table
+  table.appendChild(headerRow);
+
   people.forEach((person) => {
     const row = document.createElement('tr');
 
