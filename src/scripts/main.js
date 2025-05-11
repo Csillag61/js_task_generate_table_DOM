@@ -358,3 +358,36 @@ const people = [
 console.log(people); // you can remove it
 
 // write your code here
+document.addEventListener('DOMContentLoaded', () => {
+  const table = document.querySelector('.dashboard');
+
+  if (!table) {
+    // eslint-disable-next-line no-console
+    console.error("Table with class 'dashboard' not found.");
+
+    return;
+  }
+
+  people.forEach((person) => {
+    const row = document.createElement('tr');
+
+    const age = person.died - person.born;
+    const century = Math.ceil(person.died / 100);
+
+    ['name', 'sex', 'born', 'died'].forEach((key) => {
+      const cell = document.createElement('td');
+
+      cell.textContent = person[key];
+      row.appendChild(cell);
+    });
+
+    [age, century].forEach((value) => {
+      const cell = document.createElement('td');
+
+      cell.textContent = value;
+      row.appendChild(cell);
+    });
+
+    table.appendChild(row);
+  });
+});
